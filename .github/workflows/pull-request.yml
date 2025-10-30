@@ -1,0 +1,20 @@
+name: '🔀 Pull Request Jobs'
+
+on:
+  pull_request:
+
+# Cancel previous workflow runs for the same PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  quality-checks:
+    name: Quality Checks
+    uses: ./.github/workflows/build-lint.yml
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
+      concurrency-group: build-lint-pr-${{ github.event.pull_request.number }}
