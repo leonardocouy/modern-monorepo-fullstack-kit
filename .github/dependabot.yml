@@ -1,209 +1,126 @@
 version: 2
+
 updates:
-  # Root dependencies (Turborepo, dev tools, etc.)
+  # Root-level configuration for pnpm workspace
+  # This manages all dependencies across the entire monorepo
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: daily
       time: '09:00'
-    open-pull-requests-limit: 10
-    commit-message:
-      prefix: 'chore'
-      prefix-development: 'chore'
-      include: 'scope'
     labels:
+      - 'dependabot'
       - 'dependencies'
-      - 'automated'
+      - 'monorepo'
+    commit-message:
+      include: scope
+      prefix: 'chore'
+    open-pull-requests-limit: 20
     groups:
-      # Group all minor and patch updates together
-      minor-and-patch:
+      # Monorepo and build tools
+      monorepo-tools:
         patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      # Group major updates separately for careful review
-      major-updates:
-        patterns:
-          - '*'
-        update-types:
-          - 'major'
+          - 'turbo'
+          - '@turbo/*'
+          - 'pnpm'
+          - 'concurrently'
 
-  # Backend API app
-  - package-ecosystem: 'npm'
-    directory: '/apps/api'
-    schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
-    open-pull-requests-limit: 5
-    commit-message:
-      prefix: 'chore'
-      prefix-development: 'chore'
-      include: 'scope'
-    labels:
-      - 'dependencies'
-      - 'backend'
-      - 'automated'
-    groups:
-      minor-and-patch:
+      # TypeScript ecosystem
+      typescript:
         patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      major-updates:
-        patterns:
-          - '*'
-        update-types:
-          - 'major'
+          - 'typescript'
+          - '@types/*'
+          - 'tsx'
+          - 'ts-node'
+          - 'tsconfig-paths'
 
-  # Frontend app
-  - package-ecosystem: 'npm'
-    directory: '/apps/app'
-    schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
-    open-pull-requests-limit: 5
-    commit-message:
-      prefix: 'chore'
-      prefix-development: 'chore'
-      include: 'scope'
-    labels:
-      - 'dependencies'
-      - 'frontend'
-      - 'automated'
-    groups:
-      minor-and-patch:
+      # React ecosystem
+      react:
         patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      major-updates:
-        patterns:
-          - '*'
-        update-types:
-          - 'major'
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
 
-  # Auth package
-  - package-ecosystem: 'npm'
-    directory: '/packages/auth'
-    schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
-    open-pull-requests-limit: 3
-    commit-message:
-      prefix: 'chore'
-      prefix-development: 'chore'
-      include: 'scope'
-    labels:
-      - 'dependencies'
-      - 'auth'
-      - 'automated'
-    groups:
-      minor-and-patch:
+      # Vite and build tools
+      vite:
         patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
+          - 'vite'
+          - '@vitejs/*'
+          - 'lightningcss'
 
-  # Database package
-  - package-ecosystem: 'npm'
-    directory: '/packages/db'
-    schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
-    open-pull-requests-limit: 3
-    commit-message:
-      prefix: 'chore'
-      prefix-development: 'chore'
-      include: 'scope'
-    labels:
-      - 'dependencies'
-      - 'database'
-      - 'automated'
-    groups:
-      minor-and-patch:
+      # Tanstack ecosystem (Router + Query)
+      tanstack:
         patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
+          - '@tanstack/*'
 
-  # Validator package
-  - package-ecosystem: 'npm'
-    directory: '/packages/validator'
-    schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
-    open-pull-requests-limit: 3
-    commit-message:
-      prefix: 'chore'
-      prefix-development: 'chore'
-      include: 'scope'
-    labels:
-      - 'dependencies'
-      - 'validator'
-      - 'automated'
-    groups:
-      minor-and-patch:
+      # Express and backend
+      express:
         patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
+          - 'express'
+          - '@types/express'
+          - 'body-parser'
+          - '@types/body-parser'
+          - 'cookie-parser'
+          - '@types/cookie-parser'
+          - 'helmet'
+          - 'cors'
+          - '@types/cors'
 
-  # Config package
-  - package-ecosystem: 'npm'
-    directory: '/packages/config'
-    schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
-    open-pull-requests-limit: 2
-    commit-message:
-      prefix: 'chore'
-      prefix-development: 'chore'
-      include: 'scope'
-    labels:
-      - 'dependencies'
-      - 'config'
-      - 'automated'
-    groups:
-      minor-and-patch:
+      # Better Auth
+      authentication:
         patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
+          - 'better-auth'
 
-  # ESLint config package
-  - package-ecosystem: 'npm'
-    directory: '/packages/eslint-config'
-    schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
-    open-pull-requests-limit: 2
-    commit-message:
-      prefix: 'chore'
-      prefix-development: 'chore'
-      include: 'scope'
-    labels:
-      - 'dependencies'
-      - 'eslint'
-      - 'automated'
-    groups:
-      minor-and-patch:
+      # Database and ORM
+      database:
         patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
+          - 'drizzle-orm'
+          - 'drizzle-kit'
+          - 'better-sqlite3'
+          - '@types/better-sqlite3'
+
+      # Forms and validation
+      validation:
+        patterns:
+          - 'react-hook-form'
+          - '@hookform/resolvers'
+          - 'zod'
+          - 'neverthrow'
+
+      # UI and styling
+      ui:
+        patterns:
+          - 'tailwindcss'
+          - '@tailwindcss/*'
+          - 'tailwind-merge'
+          - 'class-variance-authority'
+          - 'clsx'
+
+      # HTTP client
+      http:
+        patterns:
+          - 'axios'
+
+      # Notifications and UI feedback
+      notifications:
+        patterns:
+          - 'react-hot-toast'
+          - 'sonner'
+
+      # Code quality and linting
+      code-quality:
+        patterns:
+          - 'eslint*'
+          - '@eslint/*'
+          - 'eslint-config-*'
+          - 'eslint-plugin-*'
+          - 'prettier'
+          - 'globals'
+          - 'jiti'
+
+      # Node.js types and utilities
+      node:
+        patterns:
+          - '@types/node'
+          - 'dotenv'
