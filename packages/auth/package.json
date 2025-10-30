@@ -1,0 +1,28 @@
+{
+  "name": "@starter/auth",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    "./server": {
+      "types": "./server.ts",
+      "default": "./server.ts"
+    },
+    "./client": {
+      "types": "./client.ts",
+      "default": "./client.ts"
+    }
+  },
+  "dependencies": {
+    "express": "workspace:*",
+    "better-auth": "^1.2.12",
+    "@starter/config": "workspace:*",
+    "@starter/db": "workspace:*",
+    "@starter/validator": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/express": "workspace:*"
+  }
+}

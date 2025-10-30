@@ -1,0 +1,37 @@
+{
+  "name": "@starter/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --tsconfig ./tsconfig.json ./index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "db:generate": "pnpm --filter @starter/db run generate",
+    "db:migrate": "pnpm --filter @starter/db run migrate",
+    "db:studio": "pnpm --filter @starter/db run studio"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "@starter/auth": "workspace:*",
+    "@starter/config": "workspace:*",
+    "cors": "^2.8.5",
+    "@starter/db": "workspace:*",
+    "dotenv": "^17.2.3",
+    "express": "catalog:",
+    "helmet": "^8.0.0",
+    "@starter/validator": "workspace:*"
+  },
+  "devDependencies": {
+    "@starter/eslint-config": "workspace:*",
+    "@types/body-parser": "^1.19.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "catalog:",
+    "@types/node": "^24.0.13",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}

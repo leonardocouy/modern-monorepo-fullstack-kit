@@ -1,0 +1,12 @@
+packages:
+  - apps/*
+  - packages/*
+
+catalog:
+  '@types/express': ^5.0.3
+  concurrently: ^9.2.0
+  express: ^5.1.0
+
+ignoredBuiltDependencies:
+  - better-sqlite3
+  - esbuild

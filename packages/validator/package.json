@@ -1,0 +1,26 @@
+{
+  "name": "@starter/validator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "express": "catalog:",
+    "neverthrow": "^8.2.0",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@starter/eslint-config": "workspace:*",
+    "@types/express": "catalog:",
+    "typescript": "^5.8.3"
+  }
+}

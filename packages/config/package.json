@@ -1,0 +1,20 @@
+{
+  "name": "@starter/config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@starter/eslint-config": "workspace:*",
+    "typescript": "^5.8.3"
+  }
+}

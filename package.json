@@ -1,0 +1,28 @@
+{
+  "name": "modern-monorepo-fullstack-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A modern fullstack TypeScript monorepo starter kit with React 19, Express 5, Better Auth, and SQLite",
+  "packageManager": "pnpm@10.13.1",
+  "scripts": {
+    "dev": "pnpm turbo dev",
+    "dev:app": "pnpm turbo --filter app dev",
+    "dev:api": "pnpm turbo --filter api dev",
+    "build": "pnpm turbo build",
+    "lint": "pnpm turbo lint",
+    "lint:fix": "pnpm turbo lint:fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,css,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,css,yaml,yml}\"",
+    "type-check": "pnpm turbo type-check",
+    "db:generate": "pnpm --filter db generate",
+    "db:migrate": "pnpm --filter db migrate",
+    "db:studio": "pnpm --filter db studio"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "eslint": "^9.38.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.4",
+    "typescript": "^5.8.3"
+  }
+}

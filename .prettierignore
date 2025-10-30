@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+build
+.next
+
+# Turbo
+.turbo
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Database
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+drizzle
+
+# Generated
+.tanstack
+routeTree.gen.ts
