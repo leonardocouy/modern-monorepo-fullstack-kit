@@ -1,6 +1,7 @@
 # Modern Monorepo Fullstack Kit
 
-> A production-ready TypeScript monorepo starter kit with React 19, Express 5, Better Auth, and SQLite
+> A production-ready TypeScript monorepo starter kit with React 19, Express 5, Better Auth, and
+> SQLite
 
 ## ✨ Features
 
@@ -49,6 +50,7 @@ pnpm dev
 ```
 
 The application will be available at:
+
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:8080
 - **Health Check**: http://localhost:8080/api/health
@@ -115,6 +117,7 @@ modern-monorepo-fullstack-kit/
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - [React 19](https://react.dev) - UI library
 - [Vite 7](https://vite.dev) - Build tool
 - [Tanstack Router](https://tanstack.com/router) - Type-safe routing
@@ -124,6 +127,7 @@ modern-monorepo-fullstack-kit/
 - [Zod](https://zod.dev) - Schema validation
 
 ### Backend
+
 - [Express 5](https://expressjs.com) - Web framework
 - [Better Auth](https://better-auth.com) - Authentication
 - [Drizzle ORM](https://orm.drizzle.team) - Type-safe ORM
@@ -132,6 +136,7 @@ modern-monorepo-fullstack-kit/
 - [CORS](https://github.com/expressjs/cors) - Cross-origin resource sharing
 
 ### Tooling
+
 - [TypeScript 5.8](https://www.typescriptlang.org) - Type system
 - [Turborepo](https://turbo.build/repo) - Build orchestration
 - [pnpm](https://pnpm.io) - Package manager
@@ -191,9 +196,11 @@ pnpm build
 This starter kit comes with Better Auth pre-configured with:
 
 ### Email & Password Authentication
+
 Ready to use out of the box. Users can sign up and sign in with email/password.
 
 ### Google OAuth (Optional)
+
 To enable Google OAuth:
 
 1. Create a Google Cloud Project at [console.cloud.google.com](https://console.cloud.google.com)
@@ -206,6 +213,7 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 ```
 
 ### Protected Routes
+
 Use the `_protected` layout to protect routes:
 
 ```tsx
@@ -222,6 +230,7 @@ function Dashboard() {
 ```
 
 ### Protected API Routes
+
 Use the `authentication` middleware:
 
 ```typescript
@@ -281,7 +290,7 @@ export const posts = sqliteTable('posts', {
 ```typescript
 // packages/db/src/schemas/index.ts
 export * from './auth';
-export * from './posts';  // Add this line
+export * from './posts'; // Add this line
 ```
 
 ```bash
@@ -319,6 +328,7 @@ app.use('/api/posts', postsRouter);
 ## 🔒 Environment Variables
 
 ### Backend (.env)
+
 ```bash
 NODE_ENV=development
 PORT=8080
@@ -335,6 +345,7 @@ GOOGLE_CLIENT_SECRET=
 ```
 
 ### Frontend (.env)
+
 ```bash
 VITE_API_URL=http://localhost:8080
 ```
@@ -342,6 +353,7 @@ VITE_API_URL=http://localhost:8080
 ## 📚 Key Patterns
 
 ### Error Handling
+
 The project uses class-based errors for operational errors:
 
 ```typescript
@@ -354,6 +366,7 @@ if (!user) {
 ```
 
 ### Request Validation
+
 All endpoints should validate requests using Zod schemas:
 
 ```typescript
@@ -369,6 +382,7 @@ const data = schema.parse(req.body);
 ```
 
 ### Result Type Pattern
+
 For service layer code, use Result types:
 
 ```typescript
@@ -384,6 +398,7 @@ async function getUserById(id: string): AsyncResult<User> {
 ## 🚢 Deployment
 
 ### Build for Production
+
 ```bash
 pnpm build
 ```
@@ -391,22 +406,26 @@ pnpm build
 ### Recommended Platforms
 
 **Frontend:**
+
 - [Vercel](https://vercel.com)
 - [Netlify](https://netlify.com)
 - [Cloudflare Pages](https://pages.cloudflare.com)
 
 **Backend:**
+
 - [Railway](https://railway.app)
 - [Fly.io](https://fly.io)
 - [Render](https://render.com)
 
 **Database:**
+
 - [Turso](https://turso.tech) - SQLite in the cloud
 - Or migrate to PostgreSQL with minimal changes
 
 ## 📖 Documentation
 
 For detailed documentation, see:
+
 - **CLAUDE.md** - Comprehensive guide for AI assistants and developers
 - **Better Auth Docs** - https://better-auth.com/docs
 - **Drizzle ORM Docs** - https://orm.drizzle.team/docs
@@ -423,6 +442,7 @@ MIT License - see LICENSE file for details
 ## 🙏 Acknowledgments
 
 Built with amazing open-source projects:
+
 - React, Express, TypeScript
 - Better Auth, Drizzle ORM, Tanstack Router
 - Turborepo, pnpm, Vite

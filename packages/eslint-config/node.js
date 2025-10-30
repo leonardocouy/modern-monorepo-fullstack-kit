@@ -5,7 +5,7 @@ export default [
   ...typescript,
   {
     plugins: {
-      'n': nodePlugin,
+      n: nodePlugin,
     },
     rules: {
       // Node.js specific rules

@@ -23,7 +23,7 @@ export default [
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      'import': importPlugin,
+      import: importPlugin,
     },
     settings: {
       'import/resolver': {
@@ -37,38 +37,47 @@ export default [
       'no-unused-vars': 'off',
 
       // TypeScript-specific rules
-      '@typescript-eslint/no-unused-vars': ['error', {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/consistent-type-imports': ['error', {
-        prefer: 'type-imports',
-        fixStyle: 'inline-type-imports',
-      }],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'inline-type-imports',
+        },
+      ],
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/await-thenable': 'error',
       '@typescript-eslint/no-misused-promises': 'error',
 
       // Import organization
-      'import/order': ['error', {
-        'groups': [
-          'builtin',
-          'external',
-          'internal',
-          ['parent', 'sibling'],
-          'index',
-          'object',
-          'type',
-        ],
-        'newlines-between': 'always',
-        'alphabetize': {
-          order: 'asc',
-          caseInsensitive: true,
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            ['parent', 'sibling'],
+            'index',
+            'object',
+            'type',
+          ],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
         },
-      }],
+      ],
       'import/no-duplicates': 'error',
       'import/no-unresolved': 'error',
     },

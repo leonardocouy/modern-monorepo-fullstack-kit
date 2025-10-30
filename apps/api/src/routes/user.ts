@@ -10,25 +10,22 @@ const updateNameSchema = z.object({
   name: z.string().min(2).max(100),
 });
 
-router.put(
-  '/name',
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      // Authenticate user
-      const { user } = await authentication(req);
+router.put('/name', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // Authenticate user
+    const { user } = await authentication(req);
 
-      // Validate request body
-      const { name } = updateNameSchema.parse(req.body);
+    // Validate request body
+    const { name } = updateNameSchema.parse(req.body);
 
-      // Update user
-      await updateUserInformationByUserId(user.id, { name });
+    // Update user
+    await updateUserInformationByUserId(user.id, { name });
 
-      res.json({ success: true, message: 'Name updated successfully' });
-    } catch (error) {
-      next(error);
-    }
+    res.json({ success: true, message: 'Name updated successfully' });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // Example: Get current user info
 router.get('/me', async (req: Request, res: Response, next: NextFunction) => {

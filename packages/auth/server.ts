@@ -60,10 +60,7 @@ export const authentication = async (
   });
 
   if (!session || !session.user) {
-    throw new AppError(
-      'Please sign in to access the resource',
-      401
-    );
+    throw new AppError('Please sign in to access the resource', 401);
   }
 
   if (plugins.length > 0) {

@@ -13,11 +13,14 @@ export default [
       // Best practices
       'prefer-const': 'error',
       'no-var': 'error',
-      'no-unused-vars': ['error', {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_',
-      }],
+      'no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
 
       // Errors
       'no-throw-literal': 'error',

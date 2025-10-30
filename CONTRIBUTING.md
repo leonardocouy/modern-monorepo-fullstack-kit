@@ -1,6 +1,7 @@
 # Contributing to Modern Monorepo Fullstack Kit
 
-Thank you for your interest in contributing! This starter kit is designed to be a solid foundation for fullstack TypeScript projects.
+Thank you for your interest in contributing! This starter kit is designed to be a solid foundation
+for fullstack TypeScript projects.
 
 ## Getting Started
 
@@ -62,17 +63,20 @@ pnpm format
 ### Making Changes
 
 1. Create a new branch for your changes:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
 2. Make your changes and commit them:
+
    ```bash
    git add .
    git commit -m "feat: add amazing feature"
    ```
 
 3. Push your changes:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -92,6 +96,7 @@ We follow conventional commits for clear change history:
 - `chore:` - Maintenance tasks
 
 Examples:
+
 ```bash
 feat: add email verification
 fix: correct auth redirect loop
@@ -160,6 +165,7 @@ echo "export const yourFunction = () => {}" > packages/your-package/index.ts
 Testing infrastructure is planned but not yet implemented. Contributions to add testing are welcome!
 
 Planned testing stack:
+
 - **Framework**: Vitest
 - **Frontend**: @testing-library/react
 - **Backend**: supertest
@@ -167,6 +173,7 @@ Planned testing stack:
 ## Documentation
 
 When adding features, please update:
+
 - **README.md** - User-facing documentation
 - **CLAUDE.md** - Developer/AI assistant guide
 - **Code comments** - For complex logic
@@ -185,6 +192,7 @@ When adding features, please update:
 ### PR Description
 
 Include in your PR description:
+
 - **What** changes you made
 - **Why** you made them
 - **How** to test the changes

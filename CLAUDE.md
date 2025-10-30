@@ -1,12 +1,16 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this
+repository.
 
 ## Repository Overview
 
-**Modern Monorepo Fullstack Kit** is a production-ready TypeScript monorepo starter kit for building fullstack web applications. It provides complete infrastructure for authentication, database management, API development, and modern React frontends - ready to use out of the box.
+**Modern Monorepo Fullstack Kit** is a production-ready TypeScript monorepo starter kit for building
+fullstack web applications. It provides complete infrastructure for authentication, database
+management, API development, and modern React frontends - ready to use out of the box.
 
 ### Project Statistics
+
 - **Primary languages:** TypeScript (strict mode), React 19, Node.js
 - **Project type:** Starter Kit / Template Repository
 - **Architecture:** Express.js 5 backend + React 19 frontend with shared packages
@@ -17,6 +21,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### What's Included Out of the Box
 
 **Complete Infrastructure:**
+
 - ✅ Monorepo setup (Turborepo + pnpm workspaces)
 - ✅ Express.js 5 backend with TypeScript + ESM
 - ✅ React 19 + Vite 7 frontend
@@ -33,11 +38,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Quick Start
 
 ### Prerequisites
+
 - **Node.js:** v24.3.0+ (v22.13.1 minimum)
 - **pnpm:** 10.13.1 (enforced via packageManager field)
 - **Platform:** Linux/macOS/WSL (SQLite file-based database)
 
 ### Initial Setup
+
 ```bash
 # Install dependencies
 pnpm install
@@ -58,6 +65,7 @@ pnpm dev
 ### Environment Configuration
 
 **Backend (.env):**
+
 ```bash
 NODE_ENV=development
 PORT=8080
@@ -71,6 +79,7 @@ GOOGLE_CLIENT_SECRET=   # Optional - for Google OAuth
 ```
 
 **Frontend (apps/app/.env):**
+
 ```bash
 VITE_API_URL=http://localhost:8080
 ```
@@ -78,6 +87,7 @@ VITE_API_URL=http://localhost:8080
 ## Essential Commands
 
 ### Development
+
 ```bash
 # Start both frontend and backend
 pnpm dev
@@ -88,6 +98,7 @@ pnpm dev:app          # Frontend only (http://localhost:5173)
 ```
 
 ### Code Quality
+
 ```bash
 # Linting
 pnpm lint             # Check all workspaces
@@ -102,6 +113,7 @@ pnpm type-check       # TypeScript validation
 ```
 
 ### Database
+
 ```bash
 # Schema workflow
 pnpm db:generate      # Generate migration from schemas
@@ -110,6 +122,7 @@ pnpm db:studio        # Open Drizzle Studio (visual DB editor)
 ```
 
 ### Build
+
 ```bash
 pnpm build            # Build all packages for production
 ```
@@ -148,9 +161,11 @@ Better Auth                      │         │ └─────────�
 
 **Location:** `/home/leo/workspace/modern-monorepo-fullstack-kit/`
 
-The project uses **Turborepo** for build orchestration and **pnpm workspaces** for dependency management.
+The project uses **Turborepo** for build orchestration and **pnpm workspaces** for dependency
+management.
 
 **Structure:**
+
 ```
 /apps                   # Deployable applications
   /api                  # Express.js backend server
@@ -165,6 +180,7 @@ The project uses **Turborepo** for build orchestration and **pnpm workspaces** f
 ```
 
 **When to use each:**
+
 - **apps/**: Create new app when building a user-facing application
 - **packages/**: Create new package for shared code used by multiple apps
 
@@ -175,6 +191,7 @@ The project uses **Turborepo** for build orchestration and **pnpm workspaces** f
 The starter kit includes **Better Auth** fully configured with:
 
 **Features:**
+
 - Email & Password authentication
 - Google OAuth (configurable)
 - Email verification
@@ -183,6 +200,7 @@ The starter kit includes **Better Auth** fully configured with:
 - Protected routes (frontend + backend)
 
 **Server Setup (`server.ts`):**
+
 ```typescript
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
@@ -190,25 +208,31 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: 'sqlite',
-    schema: { user, session, account, verification }
+    schema: { user, session, account, verification },
   }),
   emailAndPassword: { enabled: true, minPasswordLength: 8 },
-  socialProviders: { google: { /* credentials */ } },
-  emailVerification: { expiresIn: 604_800 }
+  socialProviders: {
+    google: {
+      /* credentials */
+    },
+  },
+  emailVerification: { expiresIn: 604_800 },
 });
 ```
 
 **Client Setup (`client.ts`):**
+
 ```typescript
 import { createAuthClient } from 'better-auth/react';
 
 export const authClient = createAuthClient({
   baseURL: VITE_API_URL,
-  plugins: [adminClient()]
+  plugins: [adminClient()],
 });
 ```
 
 **Authentication Middleware:**
+
 ```typescript
 import { authentication } from '@starter/auth/server';
 
@@ -219,6 +243,7 @@ router.get('/protected', async (req, res, next) => {
 ```
 
 **Database Schema:**
+
 - `user`: User accounts (id, email, name, role, emailVerified, etc.)
 - `session`: Active sessions with tokens
 - `account`: OAuth provider accounts
@@ -231,6 +256,7 @@ router.get('/protected', async (req, res, next) => {
 The project uses **class-based errors with HTTP status codes** for operational errors.
 
 **Error Hierarchy:**
+
 ```typescript
 AppError (base)
 ├─ ValidationError (400)    // Zod validation failures
@@ -240,6 +266,7 @@ AppError (base)
 ```
 
 **Usage Example:**
+
 ```typescript
 import { NotFoundError } from '@starter/validator';
 
@@ -253,11 +280,13 @@ if (!user) {
 
 ### 4. **Request Validation Pattern**
 
-**Location:** `/home/leo/workspace/modern-monorepo-fullstack-kit/packages/validator/src/validator.ts`
+**Location:**
+`/home/leo/workspace/modern-monorepo-fullstack-kit/packages/validator/src/validator.ts`
 
 All API endpoints should validate requests using **Zod schemas**.
 
 **Pattern:**
+
 ```typescript
 import { z } from 'zod';
 
@@ -276,11 +305,13 @@ router.post('/users', async (req, res) => {
 
 ### 5. **Result Type Pattern (Functional Error Handling)**
 
-**Location:** `/home/leo/workspace/modern-monorepo-fullstack-kit/packages/validator/src/neverthrow.ts`
+**Location:**
+`/home/leo/workspace/modern-monorepo-fullstack-kit/packages/validator/src/neverthrow.ts`
 
 For service layer code, use **neverthrow** Result types instead of try-catch.
 
 **Pattern:**
+
 ```typescript
 import { ok, err, type AsyncResult } from '@starter/validator';
 import { NotFoundError } from '@starter/validator';
@@ -310,6 +341,7 @@ result.match(
 The project uses **Drizzle ORM** with **SQLite** in WAL mode for concurrency.
 
 **Connection:**
+
 ```typescript
 import { db } from '@starter/db';
 import { user } from '@starter/db';
@@ -323,7 +355,8 @@ await db.insert(user).values({ email, name, createdAt: new Date() });
 
 **Key Feature:** WAL (Write-Ahead Logging) mode enabled for better read concurrency.
 
-**Limitation:** SQLite supports only **one writer at a time** (acceptable for most use cases, easily migrated to PostgreSQL if needed).
+**Limitation:** SQLite supports only **one writer at a time** (acceptable for most use cases, easily
+migrated to PostgreSQL if needed).
 
 ### 7. **File-Based Routing (Frontend)**
 
@@ -332,6 +365,7 @@ await db.insert(user).values({ email, name, createdAt: new Date() });
 The frontend uses **Tanstack Router** with file-based routing.
 
 **Convention:**
+
 ```
 routes/
   __root.tsx          → Root layout (/)
@@ -347,6 +381,7 @@ routes/
 ```
 
 **Route Definition Pattern:**
+
 ```typescript
 import { createFileRoute } from '@tanstack/react-router';
 
@@ -362,6 +397,7 @@ function YourPage() {
 **Auto-generation:** `routeTree.gen.ts` is auto-generated by Vite plugin (DO NOT EDIT).
 
 **Protected Routes:**
+
 ```typescript
 // Use _protected layout for authenticated-only pages
 // apps/app/src/routes/_protected/dashboard.tsx
@@ -397,6 +433,7 @@ Response (JSON)
 ### State Management
 
 **Frontend:**
+
 - **Server State:** Tanstack Query (5-minute stale time, no window focus refetch)
 - **Auth State:** Better Auth React hooks (`authClient.useSession()`)
 - **UI State:** React hooks (useState, useReducer)
@@ -404,6 +441,7 @@ Response (JSON)
 - **Router Context:** QueryClient injected via context
 
 **Backend:**
+
 - **Session Management:** Better Auth with database-backed sessions
 - **Database:** SQLite file-based persistence (WAL mode)
 
@@ -487,6 +525,7 @@ modern-monorepo-fullstack-kit/
 ### Adding New Features
 
 **1. Creating a New Page:**
+
 ```bash
 # Create route file
 touch apps/app/src/routes/about.tsx
@@ -508,6 +547,7 @@ function AboutPage() {
 Route automatically available at: http://localhost:5173/about
 
 **2. Creating a Protected Page:**
+
 ```tsx
 // apps/app/src/routes/_protected/dashboard.tsx
 import { createFileRoute } from '@tanstack/react-router';
@@ -524,6 +564,7 @@ function Dashboard() {
 ```
 
 **3. Creating a Database Schema:**
+
 ```typescript
 // packages/db/src/schemas/posts.ts
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
@@ -542,7 +583,7 @@ export const posts = sqliteTable('posts', {
 ```typescript
 // packages/db/src/schemas/index.ts
 export * from './auth';
-export * from './posts';  // Add this line
+export * from './posts'; // Add this line
 ```
 
 ```bash
@@ -552,6 +593,7 @@ pnpm db:migrate
 ```
 
 **4. Creating an API Endpoint:**
+
 ```typescript
 // apps/api/src/routes/posts.ts
 import { Router, type Request, type Response, type NextFunction } from 'express';
@@ -588,6 +630,7 @@ app.use('/api/posts', postsRouter);
 ### Error Handling Philosophy
 
 **Operational vs Programming Errors:**
+
 - **Operational errors** (expected): Validation failures, not found, unauthorized
   - Use custom error classes (ValidationError, NotFoundError, etc.)
   - Return appropriate HTTP status codes
@@ -598,6 +641,7 @@ app.use('/api/posts', postsRouter);
   - Fix the bug, don't handle in production
 
 **Pattern:**
+
 ```typescript
 // DO: Operational error (expected, handle gracefully)
 if (!user) {
@@ -617,6 +661,7 @@ try {
 ### Core Dependencies
 
 **Backend:**
+
 - **express:** 5.1.0 - Web server framework
 - **better-auth:** ^1.2.12 - Authentication solution
 - **better-sqlite3:** 12.4.1 - SQLite driver
@@ -628,6 +673,7 @@ try {
 - **tsx:** 4.19.3 - TypeScript execution for development
 
 **Frontend:**
+
 - **react:** 19.1.0 - UI library (latest)
 - **vite:** 7.0.0 - Build tool and dev server
 - **@tanstack/react-router:** 1.125.6 - Type-safe routing
@@ -638,6 +684,7 @@ try {
 - **react-hot-toast:** 2.5.2 - Toast notifications
 
 **Development:**
+
 - **typescript:** 5.8.3 - Type system
 - **eslint:** 9.38.0 - Linting (flat config)
 - **prettier:** 3.6.2 - Code formatting
@@ -648,9 +695,11 @@ try {
 **Current:** None (fully local application)
 
 **Optional Setup:**
+
 - **Google OAuth**: Configure via `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`
 
 **Future Considerations:**
+
 - Cloud database (Turso for SQLite, or PostgreSQL)
 - File storage (if handling uploads)
 - Email service (for email verification)
@@ -658,6 +707,7 @@ try {
 ### Environment Variables
 
 **Backend Required:**
+
 ```bash
 NODE_ENV=development      # Environment
 PORT=8080                 # Server port
@@ -671,6 +721,7 @@ GOOGLE_CLIENT_SECRET=
 ```
 
 **Frontend Required:**
+
 ```bash
 VITE_API_URL=http://localhost:8080  # Backend API URL (must have VITE_ prefix)
 ```
@@ -680,6 +731,7 @@ VITE_API_URL=http://localhost:8080  # Backend API URL (must have VITE_ prefix)
 ### Language-Specific Conventions
 
 **TypeScript:**
+
 - Strict mode enabled everywhere
 - Prefer `interface` over `type` (enforced by ESLint)
 - Use type imports: `import { type User } from '...'`
@@ -687,6 +739,7 @@ VITE_API_URL=http://localhost:8080  # Backend API URL (must have VITE_ prefix)
 - Explicit return types for functions (recommended)
 
 **React:**
+
 - Functional components only (no classes)
 - Hooks at top of component
 - No `React` import needed (React 19)
@@ -695,12 +748,14 @@ VITE_API_URL=http://localhost:8080  # Backend API URL (must have VITE_ prefix)
 ### Naming Conventions
 
 **Files:**
+
 - Routes: kebab-case (`finance.tsx`, `task-list.tsx`)
 - Components: kebab-case files, PascalCase exports (`user-card.tsx` → `UserCard`)
 - Utilities: kebab-case (`api-client.ts`, `date-helpers.ts`)
 - Config: standard names (`vite.config.ts`, `eslint.config.js`)
 
 **Code:**
+
 ```typescript
 // Variables: camelCase
 const queryClient = new QueryClient();
@@ -732,6 +787,7 @@ function handler(_req, res) {}
 ### For New Projects
 
 1. **Clone/Use as Template:**
+
    ```bash
    # Option 1: Clone
    git clone <repo-url> my-new-project
@@ -756,18 +812,21 @@ function handler(_req, res) {}
 ### Extending the Starter Kit
 
 **Add a New Module:**
+
 ```bash
 mkdir -p apps/app/src/modules/blog
 # Create components, hooks, pages for blog feature
 ```
 
 **Add a New Package:**
+
 ```bash
 mkdir -p packages/email
 # Create email sending utilities
 ```
 
 **Add Testing:**
+
 ```bash
 pnpm add -D vitest @testing-library/react
 # Configure vitest.config.ts
@@ -778,6 +837,7 @@ pnpm add -D vitest @testing-library/react
 ### Internal Documentation
 
 **Essential Reading:**
+
 - `/README.md` - Project overview and quick start
 - `/CONTRIBUTING.md` - How to use and extend this starter kit
 - `/CLAUDE.md` - This file (comprehensive technical guide)
@@ -786,6 +846,7 @@ pnpm add -D vitest @testing-library/react
 ### External Resources
 
 **Core Technologies:**
+
 - [Better Auth Documentation](https://better-auth.com/docs)
 - [Turborepo Documentation](https://turbo.build/repo/docs)
 - [pnpm Workspaces](https://pnpm.io/workspaces)
@@ -797,14 +858,13 @@ pnpm add -D vitest @testing-library/react
 - [Vite Documentation](https://vite.dev)
 
 **Key Libraries:**
+
 - [neverthrow](https://github.com/supermacro/neverthrow) - Result type pattern
 - [ESLint Flat Config](https://eslint.org/docs/latest/use/configure/configuration-files-new)
 - [Express.js 5](https://expressjs.com/en/5x/api.html)
 
 ---
 
-**Last Updated:** 2025-10-30
-**Project Status:** Production-ready starter kit
-**Version:** 0.1.0
+**Last Updated:** 2025-10-30 **Project Status:** Production-ready starter kit **Version:** 0.1.0
 
 For improvements to this guide, submit a pull request or open an issue on GitHub.

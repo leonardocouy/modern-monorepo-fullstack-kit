@@ -20,7 +20,7 @@ export default [
       },
     },
     plugins: {
-      'react': react,
+      react: react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       'jsx-a11y': jsxA11y,
@@ -40,19 +40,25 @@ export default [
       'react/jsx-key': ['error', { checkFragmentShorthand: true }],
       'react/no-array-index-key': 'warn',
       'react/self-closing-comp': 'error',
-      'react/jsx-curly-brace-presence': ['error', {
-        props: 'never',
-        children: 'never',
-      }],
+      'react/jsx-curly-brace-presence': [
+        'error',
+        {
+          props: 'never',
+          children: 'never',
+        },
+      ],
 
       // React Hooks rules (CRITICAL for React 19)
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
 
       // React Refresh (for Vite HMR)
-      'react-refresh/only-export-components': ['warn', {
-        allowConstantExport: true,
-      }],
+      'react-refresh/only-export-components': [
+        'warn',
+        {
+          allowConstantExport: true,
+        },
+      ],
 
       // Accessibility rules
       'jsx-a11y/alt-text': 'warn',
