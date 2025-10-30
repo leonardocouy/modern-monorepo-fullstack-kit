@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 
 import { useSession, useAuthActions } from '~/modules/auth';
 
-export const Route = createFileRoute('/_protected/')({
+export const Route = createFileRoute('/_protected/dashboard')({
   component: ProtectedHome,
 });
 

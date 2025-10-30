@@ -24,7 +24,7 @@ app.use(
 
 // Better Auth handler (MUST be before body parser)
 // https://www.better-auth.com/docs/integrations/express
-app.all('/api/auth/*', authHandler);
+app.use('/api/auth', authHandler);
 
 // Body parsing (mount after Better Auth handler)
 app.use(bodyParser.json());
