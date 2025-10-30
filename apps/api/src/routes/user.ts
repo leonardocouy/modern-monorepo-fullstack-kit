@@ -1,6 +1,6 @@
-import { Router, type Request, type Response, type NextFunction } from 'express';
 import { authentication } from '@starter/auth/server';
 import { updateUserInformationByUserId } from '@starter/db';
+import { Router, type Request, type Response, type NextFunction } from 'express';
 import { z } from 'zod';
 
 const router = Router();

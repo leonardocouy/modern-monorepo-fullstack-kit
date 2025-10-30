@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import { authClient } from '@starter/auth/client';
 import { useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
 export const useSession = () => {
@@ -41,7 +41,7 @@ export const useAuthActions = () => {
         onSuccess: () => {
           toast.success('Thanks for registering!');
           setTimeout(() => {
-            navigate({ to: '/' });
+            void navigate({ to: '/' });
           }, 1000);
         },
         onError: (err) => {
@@ -77,7 +77,7 @@ export const useAuthActions = () => {
       {
         onSuccess: () => {
           toast.success('Come back soon!');
-          navigate({ to: '/auth/login' });
+          void navigate({ to: '/auth/login' });
         },
         onError: (err) => {
           console.error('Cannot logout with this user');
@@ -115,7 +115,7 @@ export const useVerificationEmail = () => {
 
   useEffect(() => {
     if (session.data?.user) {
-      authClient.sendVerificationEmail({
+      void authClient.sendVerificationEmail({
         email: session.data.user.email,
         callbackURL: `${window.location.origin}/`,
       });

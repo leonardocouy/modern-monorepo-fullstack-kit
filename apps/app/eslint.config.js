@@ -1,4 +1,4 @@
-import react from '@my-life-manager/eslint-config/react';
+import react from '@starter/eslint-config/react';
 
 export default [
   ...react,

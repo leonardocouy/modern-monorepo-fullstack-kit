@@ -1,6 +1,6 @@
+import { authHandler } from '@starter/auth/server';
 import { config } from '@starter/config';
 import { AppError } from '@starter/validator';
-import { authHandler } from '@starter/auth/server';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { type Request, type Response, type NextFunction } from 'express';

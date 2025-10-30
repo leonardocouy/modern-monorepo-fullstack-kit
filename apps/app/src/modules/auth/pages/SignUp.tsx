@@ -1,7 +1,8 @@
-import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import { useAuthActions } from '../hooks/useAuth';
+import { useState, type FormEvent } from 'react';
+
 import { GoogleButton } from '../components/Google';
+import { useAuthActions } from '../hooks/useAuth';
 
 export default function SignUpPage() {
   const [name, setName] = useState('');
@@ -9,9 +10,9 @@ export default function SignUpPage() {
   const [password, setPassword] = useState('');
   const { signUpFn, googleFn } = useAuthActions();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await signUpFn({ email, password, name });
+    void signUpFn({ email, password, name });
   };
 
   return (

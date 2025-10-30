@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+
 import { useSession, useAuthActions } from '~/modules/auth';
 
 export const Route = createFileRoute('/_protected/')({
@@ -35,7 +36,7 @@ function ProtectedHome() {
               </div>
 
               <button
-                onClick={signOutFn}
+                onClick={() => void signOutFn()}
                 className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 Sign Out

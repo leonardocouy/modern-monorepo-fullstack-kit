@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
 import { Outlet, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
+
 import { useSession } from '../hooks/useAuth';
 
 export const Protected = () => {
@@ -8,7 +9,7 @@ export const Protected = () => {
 
   useEffect(() => {
     if (!isPending && !session) {
-      navigate({ to: '/auth/login' });
+      void navigate({ to: '/auth/login' });
     }
   }, [isPending, session, navigate]);
 

@@ -1,4 +1,4 @@
-import typescript from '@my-life-manager/eslint-config/typescript';
+import typescript from '@starter/eslint-config/typescript';
 
 export default [
   ...typescript,

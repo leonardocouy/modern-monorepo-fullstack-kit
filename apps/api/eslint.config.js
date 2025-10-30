@@ -1,4 +1,4 @@
-import node from '@my-life-manager/eslint-config/node';
+import node from '@starter/eslint-config/node';
 
 export default [
   ...node,

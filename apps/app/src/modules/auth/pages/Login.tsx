@@ -1,16 +1,17 @@
-import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import { useAuthActions } from '../hooks/useAuth';
+import { useState, type FormEvent } from 'react';
+
 import { GoogleButton } from '../components/Google';
+import { useAuthActions } from '../hooks/useAuth';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signInFn, googleFn } = useAuthActions();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await signInFn({ email, password });
+    void signInFn({ email, password });
   };
 
   return (

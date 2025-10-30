@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
 import { Outlet, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
+
 import { useSession } from '../hooks/useAuth';
 
 export const AuthLayout = () => {
@@ -9,7 +10,7 @@ export const AuthLayout = () => {
   useEffect(() => {
     // Redirect to home if already authenticated
     if (!isPending && session) {
-      navigate({ to: '/' });
+      void navigate({ to: '/' });
     }
   }, [isPending, session, navigate]);
 
