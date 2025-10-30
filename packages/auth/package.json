@@ -16,13 +16,13 @@
     }
   },
   "dependencies": {
-    "express": "workspace:*",
+    "express": "catalog:",
     "better-auth": "^1.2.12",
     "@starter/config": "workspace:*",
     "@starter/db": "workspace:*",
     "@starter/validator": "workspace:*"
   },
   "devDependencies": {
-    "@types/express": "workspace:*"
+    "@types/express": "catalog:"
   }
 }

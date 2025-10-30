@@ -61,7 +61,6 @@ export const authentication = async (
 
   if (!session || !session.user) {
     throw new AppError(
-      'Unauthorized',
       'Please sign in to access the resource',
       401
     );
