@@ -31,7 +31,7 @@
     "@types/body-parser": "^1.19.5",
     "@types/cors": "^2.8.17",
     "@types/express": "catalog:",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.10.0",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
   }
