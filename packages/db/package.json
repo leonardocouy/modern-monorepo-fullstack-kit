@@ -17,13 +17,13 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "better-sqlite3": "^12.4.1",
+    "better-sqlite3": "^12.4.5",
     "drizzle-orm": "^0.44.2"
   },
   "devDependencies": {
     "@starter/eslint-config": "workspace:*",
     "@types/better-sqlite3": "^7.6.9",
-    "drizzle-kit": "^0.31.4",
+    "drizzle-kit": "^0.31.7",
     "typescript": "^5.8.3"
   }
 }
