@@ -15,7 +15,7 @@
     "db:studio": "pnpm --filter @starter/db run studio"
   },
   "dependencies": {
-    "body-parser": "^2.2.0",
+    "body-parser": "^2.2.1",
     "@starter/auth": "workspace:*",
     "@starter/config": "workspace:*",
     "cors": "^2.8.5",
