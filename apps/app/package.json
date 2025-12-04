@@ -22,8 +22,8 @@
     "clsx": "^2.1.1",
     "@starter/auth": "workspace:*",
     "@starter/config": "workspace:*",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
     "react-hook-form": "^7.60.0",
     "react-hot-toast": "^2.5.2",
     "tailwind-merge": "^3.3.1",
@@ -33,8 +33,8 @@
   "devDependencies": {
     "@starter/eslint-config": "workspace:*",
     "@tanstack/router-plugin": "^1.125.6",
-    "@types/react": "^19.0.6",
-    "@types/react-dom": "^19.0.6",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.0",
     "typescript": "^5.8.3",
     "vite": "^7.0.0"
