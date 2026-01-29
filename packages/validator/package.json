@@ -16,7 +16,7 @@
   "dependencies": {
     "express": "catalog:",
     "neverthrow": "^8.2.0",
-    "zod": "^4.1.12"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@starter/eslint-config": "workspace:*",
