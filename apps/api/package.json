@@ -32,7 +32,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "catalog:",
     "@types/node": "^24.0.13",
-    "tsx": "^4.19.3",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.3"
   }
 }
